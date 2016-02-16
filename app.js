@@ -29,31 +29,54 @@ else if (time >= 20 && time <23) {
   pizzas= generateRandom (12,31);
   deliveries= generateRandom(5,12);
 }
-else if (time >= 23 && time <= 2) {
+else if (time >= 23 && time <= 25) {
   pizzas= generateRandom (5,20);
   deliveries= generateRandom(6,11);
 }
   return[pizzas,deliveries];
 }
 
-function putstuffinarray() {
-  var allthestuff = [];
-  for (var i=8; i<=23; i++){
-    var PandD= pizzaAndDeliveries(i)
 
-    allthestuff.push(i +':00'+ PandD[0] + ' pizzas ' + PandD[1] + ' deliveries ')
-    for (var j=0; j<=2; j++){
-      allthestuff.push(j +':00'+ PandD[0] + ' pizzas ' + PandD[1] + ' deliveries ')
-    }
-    return allthestuff;
+function putstuffinarray() {
+  var stuffpertime = [];
+  for (var i=8; i<=25 ; i++){
+    var PandD= pizzaAndDeliveries(i);
+    stuffpertime.push(i +':00'+ ' '+ PandD[0] + ' pizzas ' + PandD[1] + ' deliveries ')
+  }
+  return stuffpertime;
+}
+
+var listTime = [];
+
+function listify(placeForMahList, stufftobelisted) {
+  for (var i=0; i < stufftobelisted.length; i++) {
+    var liEl = document.createElement('li');
+    liEl.textContent = stufftobelisted[i];
+    placeForMahList.appendChild(liEl);
   }
 }
 
-var thingstobelisted = putstuffinarray()
-var placeformylist= document.getElementById('ballard')
-function listify(placeformylist, thingstobelisted) {
-  for (var i=0; i<thingstobelisted.length; i++)
-    var liEl = document.createElement('li');
-  liEl.textContent = listed[i];
-  placeformylist.appendChild(liEl);
-}
+
+var ballard= document.getElementById('ballard');
+var ballardTimes= putstuffinarray();
+listify(ballard,ballardTimes);
+
+var firsthill= document.getElementById('firsthill');
+var firsthillTimes= putstuffinarray();
+listify(firsthill,firsthillTimes);
+
+var intdist= document.getElementById('intdist');
+var intdistTimes= putstuffinarray();
+listify(intdist,intdistTimes);
+
+var slu= document.getElementById('slu');
+var sluTimes= putstuffinarray();
+listify(slu,sluTimes);
+
+var georgetown= document.getElementById('georgetown');
+var georgetownTimes= putstuffinarray();
+listify(georgetown,georgetownTimes);
+
+var ravenna= document.getElementById('ravenna');
+var ravennaTimes= putstuffinarray();
+listify(ravenna,ravennaTimes);
