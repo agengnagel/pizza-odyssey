@@ -1,82 +1,54 @@
 'use strict';
 
+function Pizza3001(locationName, storeData) {
+  this.locationName= locationName;
+  this.storeData= storeData;
+  this.hourlyPizzas = [];
+  this.hourlyDeliveries= [];
+  this.makeRandoms();
+}
 
 function generateRandom (min, max) {
   return Math.floor((Math.random() * (max - min) + 1)) + min;
 }
 
-function pizzaAndDeliveries(time) {
-  var pizzas = 0
-  var deliveries = 0
-
-  if (time >= 8 && time < 11) {
-    pizzas= generateRandom (0,4);
-    deliveries= generateRandom(0,4);
+Pizza3001.prototype.makeRandoms= function (){
+  for (var i=0; i<this.storeData.length; i++) {
+    for (var j=0; j<3; j++) {
+      var tempPizza= generateRandom ([i][0], [i][1])
+      this.hourlyPizzas.push(tempPizza);
+      var tempDeliver= generateRandom ([i][2],[i][3]);
+      this.hourlyDeliveries.push(tempDeliver);
+    }
   }
-else if (time >= 11 && time <14) {
-  pizzas= generateRandom (0,7);
-  deliveries= generateRandom(0,4);
-}
-else if (time >= 14 && time <17) {
-  pizzas= generateRandom (2,15);
-  deliveries= generateRandom(1,4);
-}
-else if (time >= 17 && time <20) {
-  pizzas= generateRandom (15,35);
-  deliveries= generateRandom(3,8);
-}
-else if (time >= 20 && time <23) {
-  pizzas= generateRandom (12,31);
-  deliveries= generateRandom(5,12);
-}
-else if (time >= 23 && time <= 25) {
-  pizzas= generateRandom (5,20);
-  deliveries= generateRandom(6,11);
-}
-  return[pizzas,deliveries];
-}
+};
 
+var ballardData = [[0,4,0,4],[0,7,0,4],[2,15,1,4], [15,35,3,8], [12,31,5,12] [5,20,6,11]];
 
-function putstuffinarray() {
-  var stuffpertime = [];
-  for (var i=8; i<=25 ; i++){
-    var PandD= pizzaAndDeliveries(i);
-    stuffpertime.push(i +':00'+ ' '+ PandD[0] + ' pizzas ' + PandD[1] + ' deliveries ')
+var firsthillData = [[1,3,1,7],[ 5,9,2,8],[2,13,1,6], [18,32,3,9], [1,3,5,12] [8,20,6,16]];
+
+var ballard = new Pizza3001 ('ballard', ballardData);
+var firsthill= new Pizza3001 ('firsthill', firsthillData);
+
+var pizzatable = document.getElementById('pizzatable');
+var tableHead = ['Hours'];
+
+var rowOne = createTableRow(ballard.hourlyPizzas);
+var rowTwo= createTableRow (ballard.hourlyDeliveries);
+
+function createTableRow (infoArray) {
+  var newTR = document.createElement('tr');
+  for(var i=0; i<infoArray.length; i++){
+    var newTD = document.createElement('td');
+    newTD.textContent = infoArray[i];
+    newTR.appendChild(newTD);
   }
-  return stuffpertime;
+  return newTR;
 }
-
-var listTime = [];
-
-function listify(placeForMahList, stufftobelisted) {
-  for (var i=0; i < stufftobelisted.length; i++) {
-    var liEl = document.createElement('li');
-    liEl.textContent = stufftobelisted[i];
-    placeForMahList.appendChild(liEl);
-  }
-}
+var headerRow = createTableRow(tableHead);
+var ballardRow = createTableRow(ballard.hourlyPizzas);
 
 
-var ballard= document.getElementById('ballard');
-var ballardTimes= putstuffinarray();
-listify(ballard,ballardTimes);
-
-var firsthill= document.getElementById('firsthill');
-var firsthillTimes= putstuffinarray();
-listify(firsthill,firsthillTimes);
-
-var intdist= document.getElementById('intdist');
-var intdistTimes= putstuffinarray();
-listify(intdist,intdistTimes);
-
-var slu= document.getElementById('slu');
-var sluTimes= putstuffinarray();
-listify(slu,sluTimes);
-
-var georgetown= document.getElementById('georgetown');
-var georgetownTimes= putstuffinarray();
-listify(georgetown,georgetownTimes);
-
-var ravenna= document.getElementById('ravenna');
-var ravennaTimes= putstuffinarray();
-listify(ravenna,ravennaTimes);
+pizzatable.appendChild(headerRow);
+pizzatable.appendChild(rowOne);
+pizzatable.appendChild(rowTwo);
