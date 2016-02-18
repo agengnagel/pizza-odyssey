@@ -1,3 +1,9 @@
+
+
+body {
+  background-color: #6A8A76;
+}
+
 h1 {
   font-family: 'Cookie', cursive;
   align-items: center;
@@ -7,6 +13,14 @@ h2 {
   font-family: 'Cookie', cursive;
   align-items: center;
 
+}
+.box {
+
+  text-align: center;
+  width: 150px;
+  height: 200px;
+  margin: 0px,0px,0px,0px;
+  background-color: #993333;
 }
 li {
   list-style-type: none;
