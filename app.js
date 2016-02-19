@@ -1,12 +1,12 @@
 'use strict';
 
-function Pizza3001(locationName, storeData) {
+function Pizza3001(locationName, storeData,totalPizzas) {
   this.locationName= locationName;
   this.openhours=['8:00am-11:00am','11:00am-2:00pm','2:00pm-5:00pm','5:00pm-8:00pm', '8:00pm-11:00pm','11:00pm-2:00am'];
   this.storeData= storeData;
   this.hourlyPizzas = [];
   this.hourlyDeliveries= [];
-
+  this.totalPizzas= totalPizzas;
 };
 
 Pizza3001.prototype.generateRandom = function(min, max) {
@@ -25,8 +25,20 @@ Pizza3001.prototype.makeRandoms= function (){
   // }
 };
 
+var total = 0;
+Pizza3001.prototype.addPizzas= function (){
+  for(var i = 0; i < this.hourlyPizzas.length; i++){
+    total += [i];
+    this.totalPizzas= total;
+    return this.totalPizzas;
+  }
+};
+
 Pizza3001.prototype.render= function(){
   this.makeRandoms();
+  this.addPizzas();
+
+
   var shopTable = document.createElement('table');
   console.log('shoptable', shopTable);
   var trHeader1= document.createElement('tr');
@@ -52,11 +64,13 @@ Pizza3001.prototype.render= function(){
   tdEl.textContent = 'Deliveries';
   trHeader2.appendChild(tdEl);
 
+
   shopTable.appendChild(trHeader2);
 
   for (var i = 0; i < this.openhours.length; i++) {
 
     var trEl = document.createElement('tr');
+
     tdEl = document.createElement('td');
     tdEl.textContent = this.openhours[i];
     trEl.appendChild(tdEl);
@@ -69,11 +83,12 @@ Pizza3001.prototype.render= function(){
     tdEl.textContent = this.hourlyDeliveries[i];
     trEl.appendChild(tdEl);
 
+
     shopTable.appendChild(trEl);
   }
 
   document.body.appendChild(shopTable);
-}
+};
 
 var ballard = new Pizza3001 ('Ballard', ballardData);
 var firsthill= new Pizza3001 ('First Hill', firsthillData);

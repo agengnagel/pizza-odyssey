@@ -1,0 +1,15 @@
+* {
+  background-color: gray;
+}
+table, tr, td {
+  align-items: center;
+  background-color: #282544;
+  border: 5px solid #FF273E;
+  padding: 20px
+}
+
+td {
+  color: white;
+  background-color: #5AB945;
+  font-family: Times;
+}
