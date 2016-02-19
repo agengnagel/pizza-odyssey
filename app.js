@@ -75,25 +75,17 @@ Pizza3001.prototype.render= function(){
   document.body.appendChild(shopTable);
 }
 
-var ballardData = [
-  [0,4,0,4],
-  [0,7,0,4],
-  [2,15,1,4],
-  [15,35,3,8],
-  [12,31,5,12],
-  [5,20,6,11]
-];
-
-var firsthillData = [
-  [1,3,1,7],
-  [ 5,9,2,8],
-  [2,13,1,6],
-  [18,32,3,9],
-  [1,3,5,12],
-  [8,20,6,16]
-];
-var firsthill= new Pizza3001 ('First Hill', firsthillData);
 var ballard = new Pizza3001 ('Ballard', ballardData);
+var firsthill= new Pizza3001 ('First Hill', firsthillData);
+var intdist= new Pizza3001 ('International District', intdistData);
+var slu= new Pizza3001 ('South Lake Union', sluData);
+var georgetown= new Pizza3001 ('Georgetown', georgetownData);
+var ravenna= new Pizza3001 ('Ravenna', ravennaData);
+
 
 ballard.render();
 firsthill.render();
+intdist.render();
+slu.render();
+georgetown.render();
+ravenna.render();
