@@ -28,22 +28,30 @@ h2 {
 nav {
   margin-right: 100px;
 }
+
 #storeinfo {
-  float: inherit;
-  align-self: center;
   color: white;
   text-align: center;
   display: inline-block;
   width: 808px;
   height: 300px;
-  margin: 172px;
+  position: abosolute;
+  top: 50%;
+  left: 50%;
   background-color: #FF273E;
+  border: 1px solid black;
   font-family: 'PT Mono' ;
   f
 }
-
-
 li {
   list-style-type: none;
 
+}
+#storename {
+  width: 708px;
+  height: 130px;
+  text-align: center;
+  position: abosolute;
+  padding: 50px;
+  background-color: #282544;
 }
