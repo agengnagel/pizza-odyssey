@@ -104,3 +104,33 @@ intdist.render();
 slu.render();
 georgetown.render();
 ravenna.render();
+
+var storeForm= document.getElementById('store-form');
+var allStores = [];
+
+
+function handleStoreSubmit(event) {
+  event.preventDefault();
+  // console.log(event);
+
+
+  if (!event.target.store.value || !event.target.pizza.value|| !event.target.deliveries.value) {
+    return alert('Fields cannot be empty!');
+  }
+
+  var makelocationName = event.target.store.value;
+  var makepizzas = event.target.pizza.value;
+  var makedeliveries = event.target.deliveries.value;
+
+  var newCreateShop = new Pizza3001(makelocationName, makepizzas, makedeliveries);
+
+  event.target.store.value = null;
+  event.target.pizza.value = null;
+  event.target.deliveries.value = null;
+
+  allStores.push(newCreateShop);
+  newCreateShop.render();
+};
+
+
+storeForm.addEventListener('submit', handleStoreSubmit);
