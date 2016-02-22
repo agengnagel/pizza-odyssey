@@ -34,7 +34,7 @@ nav {
   text-align: center;
   display: inline-block;
   width: 808px;
-  height: 300px;
+  height: 420px;
   position: abosolute;
   top: 50%;
   left: 50%;
@@ -54,4 +54,15 @@ li {
   position: abosolute;
   padding: 50px;
   background-color: #282544;
+}
+.img2{
+  height: 505px;
+  width: 245px;
+}
+.img3{
+  width: 810px;
+
+}
+.img4 {
+  width: 810px;
 }
